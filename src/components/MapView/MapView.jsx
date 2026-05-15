@@ -12,17 +12,16 @@ import './MapView.css'
  *   - categories: objeto { categoryKey: { label, color, short } }
  *   - center: [lat, lng] (por defecto Madrid)
  *   - zoom: número (por defecto 12)
+ *   - onSelectPlace: (place) => void  → se invoca al clicar un pin
  */
 
-// Construye un icono de pin personalizado en función de la categoría
 function buildIcon(config) {
   return L.divIcon({
     className: 'map-marker',
     html: `
       <div class="map-marker__pin" style="background:${config.color}">
         <span>${config.short}</span>
-      </div>
-    `,
+      </div>`,
     iconSize: [30, 38],
     iconAnchor: [15, 38],
     popupAnchor: [0, -34],
@@ -34,13 +33,12 @@ function MapView({
   categories = {},
   center = [40.4168, -3.7038],
   zoom = 12,
+  onSelectPlace,
 }) {
-  // Estado: qué categorías están visibles (todas activas al inicio)
   const [active, setActive] = useState(() =>
     Object.fromEntries(Object.keys(categories).map((k) => [k, true]))
   )
 
-  // Cache de iconos (no se recalcula cada render)
   const icons = useMemo(() => {
     const map = {}
     for (const [key, config] of Object.entries(categories)) {
@@ -89,6 +87,9 @@ function MapView({
             key={place.id}
             position={[place.lat, place.lng]}
             icon={icons[place.category]}
+            eventHandlers={{
+              click: () => onSelectPlace?.(place),
+            }}
           >
             <Popup>
               <div className="map-popup">
