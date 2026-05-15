@@ -1,0 +1,38 @@
+.logo {
+  position: relative;
+  width: 130px;
+  height: 80px;
+}
+
+.logo__svg {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 60px;
+  height: 70px;
+}
+
+.logo__text {
+  position: absolute;
+  top: 8px;
+  left: 28px;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  line-height: 0.95;
+}
+
+.logo__salud {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--color-coral);
+  letter-spacing: 0.5px;
+}
+
+.logo__conecta {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #7ba9b8;
+  margin-left: 4px;
+  margin-top: -4px;
+}

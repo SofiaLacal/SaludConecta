@@ -1,0 +1,37 @@
+.footer {
+  background: var(--color-mint);
+  padding: 22px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--color-text);
+}
+
+.footer__copy {
+  margin: 0;
+}
+
+.footer__partners {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px 20px;
+    font-size: 1rem;
+  }
+
+  .footer__partners {
+    justify-content: center;
+  }
+}

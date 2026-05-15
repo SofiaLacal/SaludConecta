@@ -1,0 +1,137 @@
+.farmacopea {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* === Sidebar de filtros === */
+.farmacopea__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.filtros {
+  background: var(--color-teal-dark);
+  border-radius: 6px;
+  padding: 18px 22px;
+}
+
+.filtros__title {
+  font-family: var(--font-display);
+  color: var(--color-white);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.filtros__panel {
+  background: var(--color-teal-dark);
+  border-radius: 6px;
+  min-height: 600px;
+}
+
+/* === Grid de imágenes === */
+.farmacopea__content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.farmacopea__grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+
+.img-tile {
+  aspect-ratio: 1 / 1;
+  background: var(--color-teal-medium);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-tile__label {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  transform: rotate(-22deg);
+  letter-spacing: 1px;
+}
+
+.farmacopea__divider {
+  border: none;
+  border-top: 1.5px solid var(--color-text);
+  margin: 8px 0;
+}
+
+/* === Buscador === */
+.farmacopea__search {
+  background: var(--color-teal-dark);
+  border-radius: var(--radius-pill);
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.farmacopea__search-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-text);
+  flex-shrink: 0;
+}
+
+.farmacopea__search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--color-white);
+}
+
+.farmacopea__search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* === Descripción === */
+.farmacopea__description {
+  background: var(--color-teal-dark);
+  border-radius: 18px;
+  padding: 26px 34px;
+  color: var(--color-text);
+}
+
+.farmacopea__description p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.farmacopea__filter-label {
+  font-weight: 700;
+  margin-top: 18px !important;
+}
+
+@media (max-width: 1024px) {
+  .farmacopea {
+    grid-template-columns: 1fr;
+  }
+
+  .farmacopea__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .filtros__panel {
+    min-height: 200px;
+  }
+}

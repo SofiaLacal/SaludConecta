@@ -1,0 +1,144 @@
+.salud-consejos {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* === Mascota === */
+.salud-consejos__mascot {
+  position: sticky;
+  top: 24px;
+}
+
+.mascot-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(217, 119, 112, 0.05),
+    rgba(217, 119, 112, 0.05) 10px,
+    rgba(217, 119, 112, 0.1) 10px,
+    rgba(217, 119, 112, 0.1) 20px
+  );
+  border: 2px dashed rgba(217, 119, 112, 0.3);
+  border-radius: 12px;
+}
+
+/* === Contenido === */
+.salud-consejos__content {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+/* === Filtros === */
+.salud-consejos__filters {
+  display: flex;
+  gap: 22px;
+  justify-content: flex-end;
+}
+
+.sc-filter {
+  background: #e8d4d0;
+  border-radius: 4px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  min-width: 180px;
+  justify-content: space-between;
+  transition: background 0.2s ease;
+}
+
+.sc-filter:hover {
+  background: #ddc1bc;
+}
+
+.sc-filter__icon {
+  background: var(--color-coral);
+  color: var(--color-white);
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+/* === Bocadillo === */
+.speech-bubble {
+  position: relative;
+  background: var(--color-teal-dark);
+  border-radius: 18px;
+  min-height: 200px;
+  margin-left: 20px;
+}
+
+.speech-bubble__tail {
+  position: absolute;
+  left: -28px;
+  top: 70%;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-right: 30px solid var(--color-teal-dark);
+}
+
+/* === Secciones de consejos === */
+.advice-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.advice-section__title {
+  text-align: center;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.advice-section__circles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  padding: 0 40px;
+}
+
+.circle {
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.circle--teal {
+  background: var(--color-teal-medium);
+}
+
+.circle--coral {
+  background: var(--color-coral);
+}
+
+@media (max-width: 1024px) {
+  .salud-consejos {
+    grid-template-columns: 1fr;
+  }
+
+  .salud-consejos__mascot {
+    position: static;
+    max-width: 240px;
+    margin: 0 auto;
+  }
+
+  .salud-consejos__filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .advice-section__circles {
+    padding: 0;
+  }
+}
