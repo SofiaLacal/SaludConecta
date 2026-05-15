@@ -15,6 +15,7 @@ function SitiosInteres() {
         categories={CATEGORIES}
         center={MAP_CENTER}
         zoom={MAP_ZOOM}
+        selectedId={selected?.id}
         onSelectPlace={setSelected}
       />
 

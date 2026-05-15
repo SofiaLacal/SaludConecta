@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, TileLayer, Marker } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import './MapView.css'
@@ -12,19 +12,21 @@ import './MapView.css'
  *   - categories: objeto { categoryKey: { label, color, short } }
  *   - center: [lat, lng] (por defecto Madrid)
  *   - zoom: número (por defecto 12)
+ *   - selectedId: id del sitio actualmente seleccionado (null si ninguno).
+ *                 El pin correspondiente se resalta visualmente.
  *   - onSelectPlace: (place) => void  → se invoca al clicar un pin
  */
 
-function buildIcon(config) {
+
+function buildIcon(config, selected = false) {
   return L.divIcon({
     className: 'map-marker',
     html: `
-      <div class="map-marker__pin" style="background:${config.color}">
+      <div class="map-marker__pin ${selected ? 'is-selected' : ''}" style="background:${config.color}">
         <span>${config.short}</span>
       </div>`,
     iconSize: [30, 38],
     iconAnchor: [15, 38],
-    popupAnchor: [0, -34],
   })
 }
 
@@ -33,18 +35,21 @@ function MapView({
   categories = {},
   center = [40.4168, -3.7038],
   zoom = 12,
+  selectedId = null,
   onSelectPlace,
 }) {
   const [active, setActive] = useState(() =>
     Object.fromEntries(Object.keys(categories).map((k) => [k, true]))
   )
 
-  const icons = useMemo(() => {
-    const map = {}
+  const iconCache = useMemo(() => {
+    const normal = {}
+    const highlighted = {}
     for (const [key, config] of Object.entries(categories)) {
-      map[key] = buildIcon(config)
+      normal[key] = buildIcon(config, false)
+      highlighted[key] = buildIcon(config, true)
     }
-    return map
+    return { normal, highlighted }
   }, [categories])
 
   const toggle = (cat) => setActive((prev) => ({ ...prev, [cat]: !prev[cat] }))
@@ -82,28 +87,22 @@ function MapView({
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {visiblePlaces.map((place) => (
-          <Marker
-            key={place.id}
-            position={[place.lat, place.lng]}
-            icon={icons[place.category]}
-            eventHandlers={{
-              click: () => onSelectPlace?.(place),
-            }}
-          >
-            <Popup>
-              <div className="map-popup">
-                <strong className="map-popup__name">{place.name}</strong>
-                <em className="map-popup__category">
-                  {categories[place.category]?.label}
-                </em>
-                {place.description && (
-                  <p className="map-popup__desc">{place.description}</p>
-                )}
-              </div>
-            </Popup>
-          </Marker>
-        ))}
+        {visiblePlaces.map((place) => {
+          const isSelected = place.id === selectedId
+          const icon = isSelected
+            ? iconCache.highlighted[place.category]
+            : iconCache.normal[place.category]
+          return (
+            <Marker
+              key={place.id}
+              position={[place.lat, place.lng]}
+              icon={icon}
+              eventHandlers={{
+                click: () => onSelectPlace?.(place),
+              }}
+            />
+          )
+        })}
       </MapContainer>
     </div>
   )
