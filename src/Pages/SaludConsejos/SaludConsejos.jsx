@@ -1,30 +1,63 @@
+import { useState } from 'react'
+import Filter from '../../components/Filter/Filter.jsx'
 import './SaludConsejos.css'
 
+const GENERO_OPTIONS = [
+  { value: 'hombre', label: 'Hombre' },
+  { value: 'mujer', label: 'Mujer' },
+]
+
+const EDAD_OPTIONS = [
+  { value: '50-60', label: 'De 50 a 60 años' },
+  { value: '60-70', label: 'De 60 a 70 años' },
+]
+
+// El tercer filtro está abierto -- POR SI SE QUIERE AÑADIR OTRO FILTRO
+const X_OPTIONS = [
+  { value: 'opcion1', label: 'Opción 1' },
+  { value: 'opcion2', label: 'Opción 2' },
+]
+
 function SaludConsejos() {
+  const [genero, setGenero] = useState('')
+  const [edad, setEdad] = useState('')
+  const [x, setX] = useState('')
+
   return (
     <div className="salud-consejos">
-      {/* === Mascota (placeholder, se añadirá después) === */}
+      {/* === Mascota === */}
       <div className="salud-consejos__mascot">
-        <div className="mascot-placeholder" aria-label="Mascota">
-          {/* Aquí irá la mascota de la manzana */}
-        </div>
+        <img
+          src="public/mascota.png"
+          alt="Mascota Salud Conecta"
+          className="salud-consejos__mascot-img"
+        />
       </div>
 
       <div className="salud-consejos__content">
         {/* === Filtros superiores === */}
         <div className="salud-consejos__filters">
-          <button className="sc-filter" type="button">
-            <span>Busca por género</span>
-            <span className="sc-filter__icon">▾</span>
-          </button>
-          <button className="sc-filter" type="button">
-            <span>Busca por edad</span>
-            <span className="sc-filter__icon">▾</span>
-          </button>
-          <button className="sc-filter" type="button">
-            <span>Busca por X</span>
-            <span className="sc-filter__icon">▾</span>
-          </button>
+          <Filter
+            size="sm"
+            value={genero}
+            onChange={setGenero}
+            placeholder="Busca por género"
+            options={GENERO_OPTIONS}
+          />
+          <Filter
+            size="sm"
+            value={edad}
+            onChange={setEdad}
+            placeholder="Busca por edad"
+            options={EDAD_OPTIONS}
+          />
+          <Filter
+            size="sm"
+            value={x}
+            onChange={setX}
+            placeholder="Busca por X"
+            options={X_OPTIONS}
+          />
         </div>
 
         {/* === Bocadillo de diálogo === */}

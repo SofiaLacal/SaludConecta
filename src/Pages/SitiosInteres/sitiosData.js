@@ -32,7 +32,7 @@ export const CATEGORIES = {
 }
 
 export const PLACES = [
-  // === HOSPITALES (datos reales) ===
+  // === HOSPITALES (AMPLIAR SI NECESARIO) ===
   {
     id: 1,
     name: 'Hospital Universitario La Paz',
@@ -142,7 +142,7 @@ export const PLACES = [
     description: 'C. Doctor Esquerdo 45',
   },
 
-  // === CENTROS DE DÍA (EJEMPLOS) ===
+  // === CENTROS DE DÍA (AMPLIAR SI NECESARIO) ===
   {
     id: 30,
     name: 'Centro de Día Pirámides',
@@ -168,7 +168,7 @@ export const PLACES = [
     description: 'C. de Los Peñascales, 14',
   },
 
-  // === PARQUES (datos reales) ===
+  // === PARQUES (AMPLIAR SI NECESARIO ===
   {
     id: 40,
     name: 'Parque del Retiro',

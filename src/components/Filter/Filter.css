@@ -1,0 +1,62 @@
+.filter {
+  position: relative;
+  display: inline-block;
+}
+
+.filter__select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--color-coral-pale);
+  border: none;
+  border-radius: 4px;
+  padding: 10px 50px 10px 18px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  cursor: pointer;
+  min-width: 240px;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.filter__select:hover {
+  background: var(--color-coral-pale-hover);
+}
+
+.filter__select:focus {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 1px;
+}
+
+.filter__select option {
+  font-family: var(--font-body);
+  background: var(--color-white);
+  color: var(--color-text);
+}
+
+.filter__arrow {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-coral);
+  color: var(--color-white);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Variante pequeña — para Salud y Consejos */
+.filter--sm .filter__select {
+  min-width: 170px;
+  padding: 7px 40px 7px 14px;
+  font-size: 0.85rem;
+}
+
+.filter--sm .filter__arrow {
+  font-size: 0.75rem;
+  padding: 2px 7px;
+}

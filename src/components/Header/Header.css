@@ -31,7 +31,7 @@
 }
 
 .header__link:hover {
-  background: rgba(217, 119, 112, 0.15);
+  background: var(--color-coral-pale);
 }
 
 .header__link--active {

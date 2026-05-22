@@ -7,36 +7,9 @@
 .datos-filtrados__filters {
   display: flex;
   gap: 32px;
-}
-
-.filter-select {
-  background: #e8d4d0;
-  border-radius: 4px;
-  padding: 10px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  min-width: 260px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
-  color: var(--color-text);
-  transition: background 0.2s ease;
-}
-
-.filter-select:hover {
-  background: #ddc1bc;
-}
-
-.filter-select__icon {
-  background: var(--color-coral);
-  color: var(--color-white);
-  padding: 2px 8px;
-  border-radius: 3px;
-  font-size: 0.85rem;
+  flex-wrap: wrap;
 }
 
 .datos-filtrados__placeholder {
   min-height: 480px;
-  background: transparent;
 }
