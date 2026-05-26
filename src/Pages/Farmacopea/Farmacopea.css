@@ -62,7 +62,6 @@
   outline-offset: 1px;
 }
 
-/* Aseguramos que el Filter dentro del sidebar coja todo el ancho */
 .filtros-form .filter,
 .filtros-form .filter__select {
   width: 100%;
